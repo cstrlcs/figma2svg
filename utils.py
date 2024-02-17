@@ -42,8 +42,8 @@ def filter_valid_nodes(nodes):
     """Filter nodes by validity."""
     return [node for node in nodes if is_valid_node(node)]
     
-def setup_icon_directory(path='./output'):
-    """Ensure the icon directory is clean and ready."""
-    if os.path.exists(path):
+def setup_icon_directory(path='./output', clear=False):
+    """Ensure the icon directory is and ready."""
+    if os.path.exists(path) and clear:
         shutil.rmtree(path, ignore_errors=True)
     os.makedirs(path, exist_ok=True)

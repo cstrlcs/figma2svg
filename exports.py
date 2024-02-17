@@ -35,7 +35,7 @@ def process_svg_for_spritesheet(svg_file):
     inner_svg = re.sub(r'(fill=")(.*?)(")', r'\1currentColor\3', inner_svg)
     return re.sub(r'\s+', ' ', inner_svg).strip()
 
-def export_assets(directory='./icons'):
+def export_assets(directory='./'):
     """Create a spritesheet and list from SVG icons."""
     svg_files = pathlib.Path(directory).glob('*.svg')
     svgs = [process_svg_for_spritesheet(file) for file in svg_files]
