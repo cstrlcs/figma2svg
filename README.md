@@ -1,8 +1,36 @@
 <p align="center">
- <img src="logo.png" alt="Figma2SVG"/>
+  <img src="logo.png" alt="Figma2SVG" />
 </p>
+<p align="center">
+    <em>Download and process SVG Icons from a Figma page into a spritesheet and JSON list</em>
+</p>
+<p align="center">
+	<img src="https://img.shields.io/github/license/cstrlcs/figma2svg?style=flat&color=0080ff" alt="license">
+	<img src="https://img.shields.io/github/last-commit/cstrlcs/figma2svg?style=flat&logo=git&logoColor=white&color=0080ff" alt="last-commit">
+	<img src="https://img.shields.io/github/languages/top/cstrlcs/figma2svg?style=flat&color=0080ff" alt="repo-top-language">
+<p>
+<hr>
 
-Download and process SVG Icons from a Figma page into a spritesheet and JSON list.
+## Quick Links
+
+> - [ Overview](#-overview)
+> - [ Features](#-features)
+> - [ Getting Started](#-getting-started)
+>   - [ Installation](#-installation)
+>   - [Running figma2svg](#-running-figma2svg)
+> - [ Project Roadmap](#-project-roadmap)
+> - [ Contributing](#-contributing)
+> - [ License](#-license)
+
+---
+
+## Overview 📖
+
+The **figma2svg** script automates the extraction of SVG icons from a Figma project, converting them into a spritesheet and JSON list.
+
+The project's primary goal is to streamline the process of integrating custom icons from Figma designs into web development projects.
+
+---
 
 ## Features 🌟
 
@@ -11,48 +39,43 @@ Download and process SVG Icons from a Figma page into a spritesheet and JSON lis
 - Generate a single SVG spritesheet for all icons.
 - Produce a JSON list of icons for easy reference and integration.
 
+---
+
 ## Getting Started 🚀
 
-### Prerequisites
+**_Requirements_**
 
-Ensure you have **Python 3.6+** installed on your machine. You will also need a Figma access token to use the API (**file key** and **personal access token**).
+Ensure you have the following dependencies installed on your system:
+
+- **Python**: `version 3.6+`
+
+You will also need a Figma access token to use the API (**file key** and **personal access token**). You can obtain these by following the instructions [here](https://www.figma.com/developers/api#access-tokens).
 
 ### Installation
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/cstrlcs/figma2svg.git
-   ```
-2. Navigate into the project directory:
-   ```bash
-   cd figma2svg
-   ```
-3. Install the required dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+1. Clone the figma2svg repository:
 
-### Setup
-
-Copy the `.env.example` file to `.env` and fill in your Figma API token:
-
-```plaintext
-FIGMA_TOKEN=your_figma_token_here
-DOCUMENT_KEY=your_document_key_here
+```sh
+git clone https://github.com/cstrlcs/figma2svg
 ```
 
-## Preparation
+2. Change to the project directory:
 
-1. Ensure all your icons are designed at exactly **24x24 pixels** to maintain uniformity and compatibility.
-2. Icons must be either components or instances of a component within your Figma project.
-3. The name assigned to each icon in Figma will be used as its identifier in the JSON list and as the filename in the spritesheet.
-4. Set your Figma API credentials in your environment variables for secure access. This requires setting up **FIGMA_FILE_KEY** and **FIGMA_PERSONAL_ACCESS_TOKEN** in your `.env` file.
+```sh
+cd figma2svg
+```
 
-## Usage 🛠
+3. Install the dependencies:
 
-To convert a Figma design to SVG, run:
+```sh
+pip install -r requirements.txt
+```
 
-```bash
+### Running `figma2svg`
+
+Use the following command to run figma2svg:
+
+```sh
 python main.py
 ```
 
@@ -60,10 +83,22 @@ This will fetch the icons from your Figma file, process them into SVG format, co
 
 It may take a while, since we don't want to overload Figma's servers with too many requests.
 
+---
+
+## Project Roadmap 🛣️
+
+- [ ] `► Add more CLI options to customize the output.`
+- [ ] `► Option to recovery from failed downloads.`
+- [ ] `► Option to update missing icons.`
+
+---
+
 ## Contributing 🤝
 
-Feel free to contribute to this project. Any help is greatly appreciated.
+Contributions are welcome! Please feel free to submit a Pull Request or open an Issue if you have any suggestions or ideas.
 
-## License 📄
+---
+
+## License 📝
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
