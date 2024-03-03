@@ -35,15 +35,16 @@ def process_svg_for_spritesheet(svg_file):
     inner_svg = re.sub(r'(fill=")(.*?)(")', r'\1currentColor\3', inner_svg)
     return re.sub(r'\s+', ' ', inner_svg).strip()
 
-def export_assets(directory='./'):
+def export_assets(directory='./output'):
     """Create a spritesheet and list from SVG icons."""
-    svg_files = pathlib.Path(directory).glob('*.svg')
+    svg_files = list(pathlib.Path(directory).glob('*.svg'))
+
     svgs = [process_svg_for_spritesheet(file) for file in svg_files]
     svg_names = [file.stem for file in svg_files]
 
     # Generate the spritesheet
     spritesheet_content = SVG_TEMPLATE.format(paths=''.join(f'<g id="{name}">{svg}</g>' for name, svg in zip(svg_names, svgs)))
-    (pathlib.Path(directory) / 'output.svg').write_text(spritesheet_content)
+    (pathlib.Path('./') / 'output.svg').write_text(spritesheet_content)
 
     # Save the list of SVG names
-    (pathlib.Path(directory) / 'output.json').write_text(json.dumps(svg_names, indent=4))
+    (pathlib.Path('./') / 'output.json').write_text(json.dumps(svg_names, indent=4))

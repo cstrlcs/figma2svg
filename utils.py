@@ -1,20 +1,31 @@
 import requests, os, shutil
 
+def fetch(url, token):
+    """Fetch a URL with an authorization token."""
+    headers = {"X-Figma-Token": token}
+    response = requests.get(url, headers=headers)
+
+    if response.status_code != 200:
+        exception = response.json().get('err')
+        exit(f'Failed to fetch: {exception}')
+
+    return response.json()
+
 def get_figma_file(key, token):
     """Fetch a Figma file's data."""
     url = f'https://api.figma.com/v1/files/{key}'
-    headers = {"X-Figma-Token": token}
-    response = requests.get(url, headers=headers)
-    return response.json()
+    return fetch(url, token)
 
 def get_figma_image_svg(id, key, token):
     """Fetch an SVG image from Figma."""
     url = f'https://api.figma.com/v1/images/{key}?ids={id}&format=svg&use_absolute_bounds=true'
-    headers = {"X-Figma-Token": token}
-    response = requests.get(url, headers=headers).json()
+    
+    response = fetch(url, token)
     image_url = response.get('images', {}).get(id)
+
     if image_url:
         return requests.get(image_url).text
+    
     return None
 
 def flatten_figma_nodes(nodes):
