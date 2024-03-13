@@ -10,7 +10,10 @@ def save_svg_icon(node, key, token, directory='./output'):
     icon_id = node.get("id")
     icon_name = node.get("name").replace('/', '_')
     
-    print(f'Fetching icon: {icon_name}')
+    if (pathlib.Path(directory) / f'{icon_name}.svg').exists():
+        print(f"Skipping icon '{icon_name}' as it already exists.")
+        return
+    
     svg_content = get_figma_image_svg(icon_id, key, token)
     
     if svg_content:
