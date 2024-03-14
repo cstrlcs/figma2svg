@@ -1,6 +1,5 @@
-<p align="center">
-  <img src="logo.png" alt="Figma2SVG" />
-</p>
+# figma2svg
+
 <p align="center">
     <em>Download and process SVG Icons from a Figma page into a spritesheet and JSON list</em>
 </p>
